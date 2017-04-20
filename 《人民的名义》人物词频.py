@@ -7,6 +7,7 @@ from pylab import *
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+# %matplotlib inline
 
 # 加载自定义词典的路径，遇到这些词汇能自动加入统计而不会作其他语义处理
 jieba.load_userdict('C:/Users/SJTU-xuzhen/Desktop/人民的名义 -专有名词.txt')
@@ -57,12 +58,12 @@ print(df)
 
 # 指定plot图表风格、指定字体、指定xy轴文字及其他画图参数
 plt.style.use("ggplot")
-mpl.rcParams['font.sans-serif'] = ['SimHei']
+mpl.rcParams['font.sans-serif'] = ['sans-serif']
 mpl.rcParams['axes.unicode_minus'] = False
-df.sort('词频', ascending=True).plot("词汇", "词频", kind="barh", legend=True, color="lightblue", figsize=[8, 5])
-plt.xlabel("词汇")
-plt.ylabel("词频")
-plt.title("《人民的名义》词频检测")
-plt.legend()  # 显示图示
+df.sort_values(by=u'词频', ascending=True).plot(u"词汇", u"词频", kind="barh", legend=True, color="lightblue", figsize=[8, 5])
+plt.xlabel(u"词汇")
+plt.ylabel(u"词频")
+plt.title(u"《人民的名义》词频检测")
+# plt.legend()  # 显示图示
 plt.show()
 fr.close()
